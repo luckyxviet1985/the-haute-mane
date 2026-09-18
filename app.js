@@ -1,102 +1,68 @@
 /**
- * THE HAUTE MANE — INTERACTIVE FRONTEND LOGIC
- * Includes:
- * - 3 Theme Modes (Chic Ivory, Midnight Noir, Botanical Sanctuary)
- * - Interactive Before & After Transformation Slider
- * - 5-Step Atelier Concierge Booking Modal
- * - Dynamic Service Category Filter
- * - Lookbook Filter
- * - Testimonial Carousel
- * - Toast Notification System
+ * THE HAUTE MANE — Client-side Application Logic
+ * Intuitive navigation, interactive services, lightbox, reviews, and 4-step booking modal
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ==========================================================================
-  // 1. THEME SWITCHER (CHIC, NOIR, BOTANICAL)
-  // ==========================================================================
-  const htmlRoot = document.documentElement;
-  const themeBtns = document.querySelectorAll('.theme-btn');
-  
-  // Check for fixed theme on body (for dedicated concept pages), then URL param, then localStorage
-  const fixedTheme = document.body.getAttribute('data-fixed-theme');
-  const urlParams = new URLSearchParams(window.location.search);
-  const themeFromUrl = urlParams.get('theme');
-  const initialTheme = fixedTheme || themeFromUrl || localStorage.getItem('haute_mane_theme') || 'chic';
 
-  function setTheme(theme, save = true) {
-    htmlRoot.setAttribute('data-theme', theme);
-    if (save && !fixedTheme) {
-      localStorage.setItem('haute_mane_theme', theme);
+  // --------------------------------------------------------------------------
+  // 1. Sticky Header Scroll Effect
+  // --------------------------------------------------------------------------
+  const siteHeader = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
     }
-    
-    themeBtns.forEach(btn => {
-      if (btn.getAttribute('data-theme') === theme) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-  }
+  }, { passive: true });
 
-  setTheme(initialTheme, !fixedTheme && !themeFromUrl);
-
-  themeBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const selectedTheme = btn.getAttribute('data-theme');
-      if (selectedTheme) {
-        setTheme(selectedTheme);
-        showToast(`Switched atmosphere to ${selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)}`);
-      }
-    });
-  });
-
-  const switchThemeActionBtns = document.querySelectorAll('.switch-theme-action');
-  switchThemeActionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selectedTheme = btn.getAttribute('data-theme');
-      if (selectedTheme) {
-        setTheme(selectedTheme);
-        showToast(`Activated ${selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)} Atmosphere`);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // ==========================================================================
-  // 2. MOBILE MENU DRAWER
-  // ==========================================================================
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  // --------------------------------------------------------------------------
+  // 2. Mobile Drawer Navigation
+  // --------------------------------------------------------------------------
+  const mobileToggle = document.getElementById('mobileToggle');
   const mobileDrawer = document.getElementById('mobileDrawer');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-  if (mobileMenuBtn && mobileDrawer) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-      });
-    });
+  function toggleMobileDrawer(open) {
+    const isOpen = open !== undefined ? open : !mobileDrawer.classList.contains('open');
+    if (isOpen) {
+      mobileDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    }
   }
 
-  // ==========================================================================
-  // 3. SERVICE CATEGORY TABS
-  // ==========================================================================
-  const serviceTabBtns = document.querySelectorAll('.service-tab-btn');
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => toggleMobileDrawer());
+  }
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMobileDrawer(false));
+  });
+
+  // --------------------------------------------------------------------------
+  // 3. Services Filter Tabs
+  // --------------------------------------------------------------------------
+  const filterPills = document.querySelectorAll('.filter-pill');
   const serviceCards = document.querySelectorAll('.service-card');
 
-  serviceTabBtns.forEach(tab => {
-    tab.addEventListener('click', () => {
-      serviceTabBtns.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
 
-      const category = tab.getAttribute('data-category');
+      const filterValue = pill.getAttribute('data-filter');
 
       serviceCards.forEach(card => {
-        if (card.getAttribute('data-category') === category || category === 'all') {
+        const category = card.getAttribute('data-category');
+        if (filterValue === 'all' || category === filterValue) {
           card.style.display = 'flex';
+          card.style.animation = 'fadeIn 0.4s ease';
         } else {
           card.style.display = 'none';
         }
@@ -104,430 +70,300 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================================================================
-  // 4. INTERACTIVE BEFORE & AFTER SLIDER
-  // ==========================================================================
-  const comparisonSlider = document.getElementById('comparisonSlider');
-  const beforeWrapper = document.getElementById('beforeWrapper');
-  const sliderHandle = document.getElementById('sliderHandle');
-  let isDragging = false;
-
-  function updateSlider(xPos) {
-    if (!comparisonSlider || !beforeWrapper || !sliderHandle) return;
-    const rect = comparisonSlider.getBoundingClientRect();
-    let position = ((xPos - rect.left) / rect.width) * 100;
-    
-    // Clamp between 5% and 95%
-    if (position < 5) position = 5;
-    if (position > 95) position = 95;
-
-    beforeWrapper.style.width = `${position}%`;
-    sliderHandle.style.left = `${position}%`;
-  }
-
-  if (comparisonSlider) {
-    comparisonSlider.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      updateSlider(e.clientX);
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      updateSlider(e.clientX);
-    });
-
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-
-    // Touch Support
-    comparisonSlider.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      if (e.touches[0]) updateSlider(e.touches[0].clientX);
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      if (e.touches[0]) updateSlider(e.touches[0].clientX);
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-  }
-
-  // ==========================================================================
-  // 5. LOOKBOOK FILTER
-  // ==========================================================================
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  // --------------------------------------------------------------------------
+  // 4. Lookbook Lightbox Modal
+  // --------------------------------------------------------------------------
   const lookbookItems = document.querySelectorAll('.lookbook-item');
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function openLightbox(item) {
+    const imgSrc = item.getAttribute('data-img');
+    const title = item.getAttribute('data-title');
+    const desc = item.getAttribute('data-desc');
 
-      const filter = btn.getAttribute('data-filter');
+    if (lightboxImg) lightboxImg.src = imgSrc;
+    if (lightboxImg) lightboxImg.alt = title;
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    if (lightboxDesc) lightboxDesc.textContent = desc;
 
-      lookbookItems.forEach(item => {
-        const category = item.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // ==========================================================================
-  // 6. PRAISE / TESTIMONIAL CAROUSEL
-  // ==========================================================================
-  const slides = document.querySelectorAll('.praise-slide');
-  const dots = document.querySelectorAll('.carousel-dots .dot');
-  const prevBtn = document.getElementById('prevPraiseBtn');
-  const nextBtn = document.getElementById('nextPraiseBtn');
-  let currentSlide = 0;
-  let carouselInterval;
-
-  function showSlide(index) {
-    if (!slides.length) return;
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
-
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentSlide);
-    });
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-  }
-
-  function nextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function prevSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  if (nextBtn && prevBtn) {
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      resetCarouselTimer();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      resetCarouselTimer();
-    });
-
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.getAttribute('data-index'), 10);
-        showSlide(idx);
-        resetCarouselTimer();
-      });
-    });
-
-    function startCarouselTimer() {
-      carouselInterval = setInterval(nextSlide, 7000);
-    }
-
-    function resetCarouselTimer() {
-      clearInterval(carouselInterval);
-      startCarouselTimer();
-    }
-
-    startCarouselTimer();
-  }
-
-  // ==========================================================================
-  // 7. INTERACTIVE 5-STEP BOOKING CONCIERGE MODAL
-  // ==========================================================================
-  const bookingModal = document.getElementById('bookingModal');
-  const openBookingBtn = document.getElementById('openBookingBtn');
-  const heroBookingBtn = document.getElementById('heroBookingBtn');
-  const mobileBookBtn = document.getElementById('mobileBookBtn');
-  const transformBookBtn = document.getElementById('transformBookBtn');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  const closeConfirmationBtn = document.getElementById('closeConfirmationBtn');
-
-  // Modal Step elements
-  const steps = [
-    document.getElementById('bookingStep1'),
-    document.getElementById('bookingStep2'),
-    document.getElementById('bookingStep3'),
-    document.getElementById('bookingStep4'),
-    document.getElementById('bookingStep5')
-  ];
-  const stepBadges = document.querySelectorAll('.step-badge');
-
-  // Summary elements
-  const sumService = document.getElementById('sumService');
-  const sumArtisan = document.getElementById('sumArtisan');
-  const sumDateTime = document.getElementById('sumDateTime');
-  const sumPrice = document.getElementById('sumPrice');
-
-  // Confirmation elements
-  const confirmedRefCode = document.getElementById('confirmedRefCode');
-  const confirmedGuest = document.getElementById('confirmedGuest');
-  const confirmedRitual = document.getElementById('confirmedRitual');
-  const confirmedArtisan = document.getElementById('confirmedArtisan');
-  const confirmedSchedule = document.getElementById('confirmedSchedule');
-
-  // Form Inputs
-  const bookingDateInput = document.getElementById('bookingDate');
-  const timeSlotBtns = document.querySelectorAll('.time-slot-btn');
-  let selectedTimeSlot = "09:30 AM";
-
-  // Set default date to tomorrow
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const tomorrowFormatted = tomorrow.toISOString().split('T')[0];
-  if (bookingDateInput) {
-    bookingDateInput.value = tomorrowFormatted;
-    bookingDateInput.min = tomorrowFormatted;
-  }
-
-  // Quick reservation inputs
-  const quickDatePicker = document.getElementById('quickDatePicker');
-  if (quickDatePicker) {
-    quickDatePicker.value = tomorrowFormatted;
-    quickDatePicker.min = tomorrowFormatted;
-  }
-
-  function openModal(initialStep = 1) {
-    if (!bookingModal) return;
-    goToStep(initialStep);
-    bookingModal.classList.add('open');
+    lightboxModal.classList.add('active');
+    lightboxModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeModal() {
-    if (!bookingModal) return;
-    bookingModal.classList.remove('open');
+  function closeLightbox() {
+    if (!lightboxModal) return;
+    lightboxModal.classList.remove('active');
+    lightboxModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
-  function goToStep(stepNumber) {
-    steps.forEach((stepEl, idx) => {
-      if (stepEl) {
-        stepEl.classList.toggle('active', idx + 1 === stepNumber);
-      }
-    });
+  lookbookItems.forEach(item => {
+    item.addEventListener('click', () => openLightbox(item));
+  });
 
-    stepBadges.forEach((badge, idx) => {
-      badge.classList.toggle('active', idx + 1 <= stepNumber);
-    });
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
 
-    updateSummary();
-  }
-
-  function updateSummary() {
-    const selectedServiceRadio = document.querySelector('input[name="selectedService"]:checked');
-    const selectedArtisanRadio = document.querySelector('input[name="selectedArtisan"]:checked');
-    const dateVal = bookingDateInput ? bookingDateInput.value : tomorrowFormatted;
-
-    if (selectedServiceRadio && sumService && sumPrice) {
-      sumService.textContent = selectedServiceRadio.value;
-      sumPrice.textContent = selectedServiceRadio.getAttribute('data-price') || '$380';
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+      closeBookingModal();
     }
+  });
 
-    if (selectedArtisanRadio && sumArtisan) {
-      sumArtisan.textContent = selectedArtisanRadio.value;
-    }
+  // --------------------------------------------------------------------------
+  // 5. Client Reviews Testimonial Carousel
+  // --------------------------------------------------------------------------
+  const reviewSlides = document.querySelectorAll('.review-slide');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+  let currentReviewIndex = 0;
+  let carouselInterval;
 
-    if (sumDateTime) {
-      sumDateTime.textContent = `${dateVal || 'Tomorrow'} at ${selectedTimeSlot}`;
-    }
+  function showSlide(index) {
+    reviewSlides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    carouselDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    currentReviewIndex = index;
   }
 
-  // Bind Openers
-  [openBookingBtn, heroBookingBtn, mobileBookBtn, transformBookBtn].forEach(btn => {
-    if (btn) btn.addEventListener('click', () => openModal(1));
-  });
-
-  // Direct Book buttons in Service cards
-  const bookServiceBtns = document.querySelectorAll('.book-service-btn');
-  bookServiceBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const serviceName = btn.getAttribute('data-service');
-      const radio = document.querySelector(`input[name="selectedService"][value="${serviceName}"]`);
-      if (radio) radio.checked = true;
-      openModal(2); // Jump directly to Artisan step
-    });
-  });
-
-  // Direct Book buttons in Artisan cards
-  const selectArtisanBtns = document.querySelectorAll('.select-artisan-btn');
-  selectArtisanBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const artisanName = btn.getAttribute('data-artisan-name');
-      const radios = document.querySelectorAll('input[name="selectedArtisan"]');
-      radios.forEach(r => {
-        if (r.value.includes(artisanName)) {
-          r.checked = true;
-        }
-      });
-      openModal(3); // Jump to Schedule
-    });
-  });
-
-  // Quick Concierge Bar "Check Availability"
-  const quickReserveBtn = document.getElementById('quickReserveBtn');
-  const quickServiceSelect = document.getElementById('quickServiceSelect');
-  const quickStylistSelect = document.getElementById('quickStylistSelect');
-
-  if (quickReserveBtn && quickServiceSelect && quickStylistSelect) {
-    quickReserveBtn.addEventListener('click', () => {
-      const serviceVal = quickServiceSelect.value;
-      const stylistVal = quickStylistSelect.value;
-      const dateVal = quickDatePicker ? quickDatePicker.value : '';
-
-      // Match service
-      const servRadio = document.querySelector(`input[name="selectedService"][value="${serviceVal}"]`);
-      if (servRadio) servRadio.checked = true;
-
-      // Match stylist
-      const stylRadio = document.querySelector(`input[name="selectedArtisan"][value="${stylistVal}"]`);
-      if (stylRadio) stylRadio.checked = true;
-
-      // Match date
-      if (dateVal && bookingDateInput) {
-        bookingDateInput.value = dateVal;
-      }
-
-      openModal(3); // Jump to schedule
-    });
+  function nextSlide() {
+    const next = (currentReviewIndex + 1) % reviewSlides.length;
+    showSlide(next);
   }
 
-  // Close buttons
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-  if (closeConfirmationBtn) closeConfirmationBtn.addEventListener('click', closeModal);
-
-  // Close on outside click
-  if (bookingModal) {
-    bookingModal.addEventListener('click', (e) => {
-      if (e.target === bookingModal) closeModal();
+  carouselDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index'), 10);
+      showSlide(idx);
+      resetCarouselTimer();
     });
+  });
+
+  function startCarouselTimer() {
+    carouselInterval = setInterval(nextSlide, 6000);
   }
 
-  // Step Navigation Buttons (Next / Prev)
-  const nextStepBtns = document.querySelectorAll('.next-step-btn');
-  const prevStepBtns = document.querySelectorAll('.prev-step-btn');
+  function resetCarouselTimer() {
+    clearInterval(carouselInterval);
+    startCarouselTimer();
+  }
 
-  nextStepBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const nextStep = parseInt(btn.getAttribute('data-next'), 10);
-      goToStep(nextStep);
-    });
-  });
+  if (reviewSlides.length > 0) {
+    startCarouselTimer();
+  }
 
-  prevStepBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const prevStep = parseInt(btn.getAttribute('data-prev'), 10);
-      goToStep(prevStep);
-    });
-  });
+  // --------------------------------------------------------------------------
+  // 6. Interactive 4-Step Booking Modal
+  // --------------------------------------------------------------------------
+  const bookingModal = document.getElementById('bookingModal');
+  const bookingBackdrop = document.getElementById('bookingBackdrop');
+  const modalClose = document.getElementById('modalClose');
 
-  // Time slot selection
-  timeSlotBtns.forEach(slot => {
-    slot.addEventListener('click', () => {
-      timeSlotBtns.forEach(s => s.classList.remove('active'));
-      slot.classList.add('active');
-      selectedTimeSlot = slot.textContent.trim();
-      updateSummary();
-    });
-  });
+  const stepIndicators = document.querySelectorAll('.step-indicator');
+  const stepPanels = document.querySelectorAll('.modal-step-panel');
+  const stepPrevBtn = document.getElementById('stepPrevBtn');
+  const stepNextBtn = document.getElementById('stepNextBtn');
+  const bookingDateInput = document.getElementById('bookingDate');
+  const bookingSummaryBox = document.getElementById('bookingSummaryBox');
 
-  // Listen for radio changes
-  document.querySelectorAll('input[name="selectedService"], input[name="selectedArtisan"]').forEach(input => {
-    input.addEventListener('change', updateSummary);
-  });
+  // Trigger buttons
+  const bookButtons = [
+    document.getElementById('headerBookBtn'),
+    document.getElementById('mobileBookBtn'),
+    document.getElementById('heroBookBtn'),
+    document.getElementById('aboutBookBtn'),
+    document.getElementById('footerBookBtn')
+  ];
 
+  // Set minimum date to today
   if (bookingDateInput) {
-    bookingDateInput.addEventListener('change', updateSummary);
+    const today = new Date().toISOString().split('T')[0];
+    bookingDateInput.min = today;
+    bookingDateInput.value = today;
   }
 
-  // Confirm Reservation Button (Step 4 -> Step 5)
-  const confirmBookingBtn = document.getElementById('confirmBookingBtn');
-  const guestName = document.getElementById('guestName');
-  const guestEmail = document.getElementById('guestEmail');
-  const guestPhone = document.getElementById('guestPhone');
+  let currentStep = 1;
 
-  if (confirmBookingBtn) {
-    confirmBookingBtn.addEventListener('click', () => {
-      if (!guestName.value.trim() || !guestEmail.value.trim() || !guestPhone.value.trim()) {
-        showToast('Please provide your name, email, and contact number.');
-        return;
+  function openBookingModal(preselectedService = null) {
+    if (preselectedService) {
+      const targetRadio = document.querySelector(`input[name="modalServiceRadio"][value="${preselectedService}"]`);
+      if (targetRadio) targetRadio.checked = true;
+    }
+    setStep(1);
+    bookingModal.classList.add('active');
+    bookingModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    toggleMobileDrawer(false);
+  }
+
+  function closeBookingModal() {
+    if (!bookingModal) return;
+    bookingModal.classList.remove('active');
+    bookingModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  bookButtons.forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', () => openBookingModal());
+    }
+  });
+
+  // Direct "Book This Service" triggers from service cards
+  document.querySelectorAll('.service-book-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const serviceName = e.currentTarget.getAttribute('data-service');
+      openBookingModal(serviceName);
+    });
+  });
+
+  if (modalClose) modalClose.addEventListener('click', closeBookingModal);
+  if (bookingBackdrop) bookingBackdrop.addEventListener('click', closeBookingModal);
+
+  function setStep(step) {
+    currentStep = step;
+
+    // Update indicator visuals
+    stepIndicators.forEach(indicator => {
+      const s = parseInt(indicator.getAttribute('data-step'), 10);
+      indicator.classList.toggle('active', s <= step);
+    });
+
+    // Update panels
+    stepPanels.forEach((panel, i) => {
+      panel.classList.toggle('active', (i + 1) === step);
+    });
+
+    // Update Footer Buttons
+    if (step === 1) {
+      stepPrevBtn.style.display = 'none';
+      stepNextBtn.textContent = 'Continue to Stylist';
+    } else if (step === 2) {
+      stepPrevBtn.style.display = 'inline-flex';
+      stepNextBtn.textContent = 'Continue to Date & Time';
+    } else if (step === 3) {
+      stepPrevBtn.style.display = 'inline-flex';
+      stepNextBtn.textContent = 'Review & Details';
+    } else if (step === 4) {
+      stepPrevBtn.style.display = 'inline-flex';
+      stepNextBtn.textContent = 'Confirm Appointment';
+      updateBookingSummary();
+    }
+  }
+
+  function updateBookingSummary() {
+    const selectedService = document.querySelector('input[name="modalServiceRadio"]:checked')?.value || 'Signature Blonding';
+    const selectedStylist = document.querySelector('input[name="modalStylistRadio"]:checked')?.value || 'First Available Master Stylist';
+    const selectedDate = bookingDateInput?.value || 'Selected Date';
+    const selectedTime = document.querySelector('input[name="modalTimeSlot"]:checked')?.value || 'Morning Slot';
+
+    if (bookingSummaryBox) {
+      bookingSummaryBox.innerHTML = `
+        <div style="margin-bottom: 0.5rem;"><strong>Selected Ritual:</strong> ${selectedService}</div>
+        <div style="margin-bottom: 0.5rem;"><strong>Stylist:</strong> ${selectedStylist}</div>
+        <div><strong>Date & Window:</strong> ${selectedDate} · ${selectedTime}</div>
+      `;
+    }
+  }
+
+  if (stepPrevBtn) {
+    stepPrevBtn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        setStep(currentStep - 1);
       }
-
-      // Generate confirmation code
-      const randomCode = Math.floor(10000 + Math.random() * 90000);
-      confirmedRefCode.textContent = randomCode;
-      confirmedGuest.textContent = guestName.value.trim();
-
-      const selectedServiceRadio = document.querySelector('input[name="selectedService"]:checked');
-      const selectedArtisanRadio = document.querySelector('input[name="selectedArtisan"]:checked');
-
-      if (confirmedRitual && selectedServiceRadio) {
-        confirmedRitual.textContent = selectedServiceRadio.value;
-      }
-      if (confirmedArtisan && selectedArtisanRadio) {
-        confirmedArtisan.textContent = selectedArtisanRadio.value;
-      }
-      if (confirmedSchedule && bookingDateInput) {
-        confirmedSchedule.textContent = `${bookingDateInput.value} • ${selectedTimeSlot}`;
-      }
-
-      goToStep(5);
-      showToast('✦ Your suite has been reserved at The Haute Mane.');
     });
   }
 
-  // ==========================================================================
-  // 8. ATELIER INQUIRY & NEWSLETTER FORMS
-  // ==========================================================================
-  const atelierInquiryForm = document.getElementById('atelierInquiryForm');
-  if (atelierInquiryForm) {
-    atelierInquiryForm.addEventListener('submit', (e) => {
+  if (stepNextBtn) {
+    stepNextBtn.addEventListener('click', () => {
+      if (currentStep < 4) {
+        setStep(currentStep + 1);
+      } else {
+        // Validation on Step 4
+        const firstName = document.getElementById('guestFirstName')?.value.trim();
+        const lastName = document.getElementById('guestLastName')?.value.trim();
+        const email = document.getElementById('guestEmail')?.value.trim();
+        const phone = document.getElementById('guestPhone')?.value.trim();
+
+        if (!firstName || !lastName || !email || !phone) {
+          showToast('Please complete all required contact fields.', 'error');
+          return;
+        }
+
+        // Complete Booking
+        closeBookingModal();
+        showToast(`Thank you, ${firstName}! Your reservation request has been received. Our concierge will text you shortly to confirm.`);
+        
+        // Reset form
+        document.getElementById('guestFirstName').value = '';
+        document.getElementById('guestLastName').value = '';
+        document.getElementById('guestEmail').value = '';
+        document.getElementById('guestPhone').value = '';
+        if (document.getElementById('guestNotes')) document.getElementById('guestNotes').value = '';
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 7. Inquiry Form Submission
+  // --------------------------------------------------------------------------
+  const inquiryForm = document.getElementById('inquiryForm');
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('inquiryName').value;
-      showToast(`Thank you, ${name}. Our head concierge will contact you within 2 business hours.`);
-      atelierInquiryForm.reset();
+      const name = document.getElementById('clientName')?.value || 'Guest';
+      showToast(`Thank you, ${name}! Your inquiry has been sent to our concierge team.`);
+      inquiryForm.reset();
     });
   }
 
+  // --------------------------------------------------------------------------
+  // 8. Newsletter Form Submission
+  // --------------------------------------------------------------------------
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('Welcome to The Mane Gazette. Your invitation has been dispatched.');
+      showToast('Welcome to The Haute Club! You will receive our next seasonal opening announcement.');
       newsletterForm.reset();
     });
   }
 
-  // ==========================================================================
-  // 9. TOAST NOTIFICATION HELPER
-  // ==========================================================================
-  function showToast(message) {
-    const toastContainer = document.getElementById('toastContainer');
-    if (!toastContainer) return;
+  // --------------------------------------------------------------------------
+  // 9. Toast Notification Utility
+  // --------------------------------------------------------------------------
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<span>⚜</span> <span>${message}</span>`;
+    if (type === 'error') {
+      toast.style.borderLeftColor = '#D9534F';
+    }
 
-    toastContainer.appendChild(toast);
+    toast.innerHTML = `
+      <span>✦</span>
+      <div>${message}</div>
+    `;
+
+    container.appendChild(toast);
 
     setTimeout(() => {
       toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
+      toast.style.transform = 'translateX(30px)';
       toast.style.transition = 'all 0.3s ease';
       setTimeout(() => toast.remove(), 300);
-    }, 4000);
+    }, 4500);
   }
+
 });
