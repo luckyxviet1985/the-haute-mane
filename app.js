@@ -181,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mobileBookBtn'),
     document.getElementById('heroBookBtn'),
     document.getElementById('aboutBookBtn'),
+    document.getElementById('lookbookBookBtn'),
     document.getElementById('footerBookBtn')
   ];
 
