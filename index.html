@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="chic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Haute Mane | Atelier de Haute Coiffure</title>
+  <meta name="description" content="The Haute Mane is an ultra-luxury hair salon and atelier. Bespoke cuts, master balayage, Japanese head spa rituals, and runway-level hair architecture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-content">
+      <span>✦ Maison de Beauté & Couture Hair Architecture</span>
+      <span class="divider">•</span>
+      <span>Complimentary Champagne & Private Valet for All Atelier Guests</span>
+      <span class="divider">•</span>
+      <a href="#services" class="announcement-link">Reserve Your Bespoke Session →</a>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span class="logo-title">THE HAUTE MANE</span>
+        <span class="logo-subtitle">ATELIER DE COIFFURE</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="#mockups" class="nav-link">Design Concepts</a></li>
+          <li><a href="#services" class="nav-link">Rituals & Services</a></li>
+          <li><a href="#artisans" class="nav-link">Artisans</a></li>
+          <li><a href="#transformations" class="nav-link">Transformations</a></li>
+          <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+          <li><a href="#praise" class="nav-link">Press</a></li>
+          <li><a href="#atelier" class="nav-link">The Atelier</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Theme Switcher & Booking CTA -->
+      <div class="header-actions">
+        <!-- Theme Switcher Dropdown / Pills -->
+        <div class="theme-selector" title="Select Aesthetic Concept">
+          <button class="theme-btn active" data-theme="chic" id="themeChicBtn">
+            <span class="theme-dot chic-dot"></span>
+            <span class="theme-name">Chic</span>
+          </button>
+          <button class="theme-btn" data-theme="noir" id="themeNoirBtn">
+            <span class="theme-dot noir-dot"></span>
+            <span class="theme-name">Noir</span>
+          </button>
+          <button class="theme-btn" data-theme="botanical" id="themeBotanicalBtn">
+            <span class="theme-dot botanical-dot"></span>
+            <span class="theme-name">Sanctuary</span>
+          </button>
+        </div>
+
+        <button class="btn btn-primary" id="openBookingBtn">
+          <span>Book Appointment</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#services" class="mobile-nav-link">Rituals & Services</a></li>
+        <li><a href="#artisans" class="mobile-nav-link">Artisans & Stylists</a></li>
+        <li><a href="#transformations" class="mobile-nav-link">Transformations</a></li>
+        <li><a href="#lookbook" class="mobile-nav-link">Lookbook</a></li>
+        <li><a href="#praise" class="mobile-nav-link">Press & Praise</a></li>
+        <li><a href="#atelier" class="mobile-nav-link">The Atelier</a></li>
+      </ul>
+      <div class="mobile-drawer-actions">
+        <div class="mobile-theme-text">Choose Atmosphere:</div>
+        <div class="theme-selector-mobile">
+          <button class="theme-btn active" data-theme="chic">Chic Ivory</button>
+          <button class="theme-btn" data-theme="noir">Midnight Noir</button>
+          <button class="theme-btn" data-theme="botanical">Botanical</button>
+        </div>
+        <button class="btn btn-primary full-width" id="mobileBookBtn">Book Appointment</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-backdrop">
+        <div class="hero-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2074&auto=format&fit=crop" alt="The Haute Mane Luxury Hair Atelier" class="hero-bg-img">
+      </div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-sparkle">✦</span>
+            <span>Parisian Elegance • Bespoke Artistry</span>
+          </div>
+          <h1 class="hero-headline">
+            Couture Hair <br>
+            <span class="italic-serif">Architecture</span>
+          </h1>
+          <p class="hero-subtext">
+            Where bespoke hair craft meets architectural mastery. An elevated sanctuary dedicated to dimensional French balayage, precision sculpting, and restorative botanical hair alchemy.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary btn-lg" id="heroBookingBtn">
+              <span>Reserve Your Suite</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <a href="#services" class="btn btn-outline btn-lg">
+              <span>Discover Rituals</span>
+            </a>
+          </div>
+
+          <!-- Hero Trust Metrics -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-number">Top 10</span>
+              <span class="metric-label">Vogue Salon Guide</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">100%</span>
+              <span class="metric-label">Organic Botanical Care</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">Private</span>
+              <span class="metric-label">VIP Dressing Suites</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Floating Card -->
+        <div class="hero-visual-card">
+          <div class="card-inner">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=900&auto=format&fit=crop" alt="Sculpted Haute Coiffure" class="card-feature-img">
+            <div class="card-caption">
+              <span class="tag">Signature Collection</span>
+              <h4>Lived-In Caramel Balayage</h4>
+              <p>Hand-painted micro-tones with organic bond-building botanical glaze.</p>
+              <a href="#lookbook" class="card-link">View in Lookbook →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Floating Concierge Bar -->
+    <section class="concierge-bar-section">
+      <div class="container">
+        <div class="concierge-bar">
+          <div class="concierge-field">
+            <label><span class="icon">✂</span> Service Category</label>
+            <select id="quickServiceSelect">
+              <option value="French Editorial Balayage">French Balayage & Color</option>
+              <option value="Couture Hair Architecture Cut">Couture Cut & Restyle</option>
+              <option value="Japanese Head Spa & Scalp Detox">Japanese Head Spa & Caviar</option>
+              <option value="Invisible Genius Weft Extensions">Bespoke Seamless Extensions</option>
+              <option value="Atelier Bridal Suite Experience">Private Bridal Suite</option>
+            </select>
+          </div>
+          <div class="concierge-divider"></div>
+          <div class="concierge-field">
+            <label><span class="icon">★</span> Master Artisan</label>
+            <select id="quickStylistSelect">
+              <option value="First Available Master">First Available Master Artist</option>
+              <option value="Camille Laurent (Creative Director)">Camille Laurent — Creative Director</option>
+              <option value="Sébastien Moreau (Master Colorist)">Sébastien Moreau — Master Colorist</option>
+              <option value="Elena Rostova (Extension Virtuoso)">Elena Rostova — Extension Virtuoso</option>
+              <option value="Julian Vance (Head Spa Specialist)">Julian Vance — Scalp & Ritual Specialist</option>
+            </select>
+          </div>
+          <div class="concierge-divider"></div>
+          <div class="concierge-field">
+            <label><span class="icon">📅</span> Preferred Date</label>
+            <input type="date" id="quickDatePicker">
+          </div>
+          <div class="concierge-action">
+            <button class="btn btn-primary" id="quickReserveBtn">
+              <span>Check Availability</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Design Concepts & Mockups Showcase Section -->
+    <section class="mockups-showcase-section" id="mockups">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Design Explorations & Mockups</span>
+          <h2 class="section-title">Three Tailored Brand Concepts</h2>
+          <p class="section-description">
+            Explore three distinct visual directions designed for The Haute Mane. Switch atmospheres instantly to experience the live website rendered in each design vision.
+          </p>
+        </div>
+
+        <div class="mockups-grid">
+          <!-- Concept 1 -->
+          <div class="mockup-card" data-concept="chic">
+            <div class="mockup-image-frame">
+              <img src="assets/mockup_concept_1_chic.jpg" alt="Concept 1: Modern Parisian Chic" class="mockup-img">
+              <div class="mockup-overlay-pill">Concept 01 • Parisian Chic</div>
+            </div>
+            <div class="mockup-card-body">
+              <div class="mockup-palette">
+                <span class="swatch" style="background:#FAF8F5;" title="Ivory Cream"></span>
+                <span class="swatch" style="background:#181716;" title="Deep Charcoal"></span>
+                <span class="swatch" style="background:#C29B38;" title="Champagne Gold"></span>
+              </div>
+              <h3>Modern Parisian Chic</h3>
+              <p>Crisp editorial ivory, warm cream, high-fashion serif typography, and balanced runway minimalism.</p>
+              <div class="mockup-actions">
+                <button class="btn btn-outline full-width switch-theme-action" data-theme="chic">
+                  <span>Activate Chic Ivory Mode</span>
+                </button>
+                <a href="concept-chic.html" class="btn btn-primary full-width" style="margin-top: 0.5rem;" target="_blank">
+                  <span>Open Client Page ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 2 -->
+          <div class="mockup-card" data-concept="botanical">
+            <div class="mockup-image-frame">
+              <img src="assets/mockup_concept_2_botanical.jpg" alt="Concept 2: Organic Botanical Sanctuary" class="mockup-img">
+              <div class="mockup-overlay-pill">Concept 02 • Botanical Sanctuary</div>
+            </div>
+            <div class="mockup-card-body">
+              <div class="mockup-palette">
+                <span class="swatch" style="background:#F4F1EA;" title="Travertine Stone"></span>
+                <span class="swatch" style="background:#4C6551;" title="Eucalyptus Sage"></span>
+                <span class="swatch" style="background:#EBE5DB;" title="Warm Cashmere"></span>
+              </div>
+              <h3>Organic Botanical Sanctuary</h3>
+              <p>Travertine stone textures, muted sage green, sunlit holistic sanctuary atmosphere, and clean beauty rituals.</p>
+              <div class="mockup-actions">
+                <button class="btn btn-outline full-width switch-theme-action" data-theme="botanical">
+                  <span>Activate Sanctuary Mode</span>
+                </button>
+                <a href="concept-botanical.html" class="btn btn-primary full-width" style="margin-top: 0.5rem;" target="_blank">
+                  <span>Open Client Page ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 3 -->
+          <div class="mockup-card" data-concept="noir">
+            <div class="mockup-image-frame">
+              <img src="assets/mockup_concept_3_noir.jpg" alt="Concept 3: Midnight Noir & Gilded Opulence" class="mockup-img">
+              <div class="mockup-overlay-pill">Concept 03 • Midnight Noir</div>
+            </div>
+            <div class="mockup-card-body">
+              <div class="mockup-palette">
+                <span class="swatch" style="background:#0C0C0E;" title="Obsidian Black"></span>
+                <span class="swatch" style="background:#D6A848;" title="Brushed Liquid Gold"></span>
+                <span class="swatch" style="background:#1B1B22;" title="Espresso Velvet"></span>
+              </div>
+              <h3>Midnight Noir & Gilded Opulence</h3>
+              <p>Dramatic obsidian dark mode, brushed liquid gold highlights, VIP lounge allure, and couture night lighting.</p>
+              <div class="mockup-actions">
+                <button class="btn btn-outline full-width switch-theme-action" data-theme="noir">
+                  <span>Activate Midnight Noir Mode</span>
+                </button>
+                <a href="concept-noir.html" class="btn btn-primary full-width" style="margin-top: 0.5rem;" target="_blank">
+                  <span>Open Client Page ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Salon Philosophy / Atelier Narrative -->
+    <section class="philosophy-section" id="philosophy">
+      <div class="container">
+        <div class="philosophy-grid">
+          <div class="philosophy-image-wrap">
+            <div class="image-accent-border"></div>
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1200&auto=format&fit=crop" alt="The Haute Mane Luxury Styling Stations" class="philosophy-img">
+            <div class="floating-badge">
+              <span class="crest">⚜</span>
+              <span class="crest-text">Parisian Heritage • Modern Precision</span>
+            </div>
+          </div>
+          <div class="philosophy-text-wrap">
+            <span class="section-eyebrow">The Atelier Philosophy</span>
+            <h2 class="section-title">A Sanctuary Where Hair Becomes Living Art</h2>
+            <p class="section-lead">
+              Founded on the belief that hair is your most intimate couture statement, The Haute Mane reinvents salon culture as an unhurried, private luxury sanctuary.
+            </p>
+            <p class="section-body">
+              Every guest is welcomed into an acoustically tranquil suite with chilled vintage champagne, artisanal teas, and a thorough face-mapping consultation. We marry old-world French coiffure techniques with cutting-edge scalp longevity science and clean biodynamic formulas.
+            </p>
+            <div class="philosophy-features">
+              <div class="feature-box">
+                <span class="feature-icon">🌿</span>
+                <div class="feature-content">
+                  <h5>Biodynamic & Cruelty-Free</h5>
+                  <p>Rare French cold-pressed botanicals, vegan peptides, and zero harsh ammonia.</p>
+                </div>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">🥂</span>
+                <div class="feature-content">
+                  <h5>Private VIP Dressing Suites</h5>
+                  <p>Individual styling alcoves tailored for complete discretion, privacy, and serenity.</p>
+                </div>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">✨</span>
+                <div class="feature-content">
+                  <h5>Microscopic Hair Analysis</h5>
+                  <p>Diagnostic scalp imaging and porosity analysis prior to every chemical service.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bespoke Services & Rituals Menu -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Bespoke Offerings</span>
+          <h2 class="section-title">The Treatment & Color Menu</h2>
+          <p class="section-description">
+            Each ritual includes an in-depth cranial analysis, sensory shampoo treatment under ambient candlelight, and custom blow-dry finish.
+          </p>
+        </div>
+
+        <!-- Service Category Tabs -->
+        <div class="service-tabs">
+          <button class="service-tab-btn active" data-category="color">Color & Balayage</button>
+          <button class="service-tab-btn" data-category="cut">Couture Cuts</button>
+          <button class="service-tab-btn" data-category="spa">Head Spa & Wellness</button>
+          <button class="service-tab-btn" data-category="extensions">Extensions & Bridal</button>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div class="services-grid" id="servicesGrid">
+          <div class="service-card" data-category="color">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Signature Haute</span>
+                <h3>French Editorial Balayage</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$380</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Hand-painted dimensional ribbons tailored to your bone structure and skin undertones. Includes custom root shadow, gloss glaze, and Olaplex bond reconstruction.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 3.5 Hours</span>
+              <span>✦ Includes Gloss & Blowout</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="French Editorial Balayage" data-price="$380">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="color">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Illumination</span>
+                <h3>Lived-In Sunlit Blonde</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$420</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Seamless low-maintenance illumination using micro-babylights and tip-outs. Engineered to grow out gracefully over 4–6 months without harsh lines.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 4 Hours</span>
+              <span>✦ Includes Bond Therapy</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Lived-In Sunlit Blonde" data-price="$420">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="color">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">High-Gloss</span>
+                <h3>Liquid Silk Color & Glaze</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$210</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Demi-permanent acid-balanced conditioning gloss that seals cuticles with diamond-like shine, neutralizes brassiness, and infuses rich botanical pigments.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 1.5 Hours</span>
+              <span>✦ High-Shine Finish</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Liquid Silk Color & Glaze" data-price="$210">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="cut">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Master Stylist</span>
+                <h3>Couture Hair Architecture Cut</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$195</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Dry and wet precision texturizing tailored to your natural movement and facial proportions. Complete with an aromatherapy cranial massage and round-brush blowout.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 75 Mins</span>
+              <span>✦ Wash & Master Finish</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Couture Hair Architecture Cut" data-price="$195">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="cut">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Runway</span>
+                <h3>The French Parisian Bob & Framing</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$220</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Effortless, blunt-yet-textured French bob with bespoke curtain framing. Sculpted to accentuate cheekbones and jawline with natural French-girl ease.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 90 Mins</span>
+              <span>✦ Sculpting & Styling</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="The French Parisian Bob & Framing" data-price="$220">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="cut">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Signature</span>
+                <h3>Haute Signature Blowout & Waves</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$115</span>
+              </div>
+            </div>
+            <p class="service-description">
+              A high-volume red-carpet blowout with Hollywood cascading waves, thermal memory setting, and weightless anti-humidity cashmere mist.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 60 Mins</span>
+              <span>✦ Red Carpet Glamour</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Haute Signature Blowout & Waves" data-price="$115">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="spa">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Holistic Wellness</span>
+                <h3>Japanese Head Spa & Scalp Detox</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$260</span>
+              </div>
+            </div>
+            <p class="service-description">
+              A deep meditative cranial rejuvenation ritual with microscopic trichological imaging, volcanic scalp scrub, steam infusion halo waterfall, and shiatsu neck massage.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 90 Mins</span>
+              <span>✦ Waterfall Steam Halo</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Japanese Head Spa & Scalp Detox" data-price="$260">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="spa">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Deep Restoration</span>
+                <h3>Beluga Caviar & Gold Hair Infusion</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">From</span>
+                <span class="service-price">$295</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Ultra-concentrated omega peptides, marine collagen, and 24k colloidal gold micro-droplets massaged deep into fragile strands to restore youthfulness, density, and elasticity.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 75 Mins</span>
+              <span>✦ Intensive Repair</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Beluga Caviar & Gold Hair Infusion" data-price="$295">
+              Book This Ritual
+            </button>
+          </div>
+
+          <div class="service-card" data-category="extensions">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">Luxury Density</span>
+                <h3>Invisible Genius Weft Extensions</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">Consultation</span>
+                <span class="service-price">$800+</span>
+              </div>
+            </div>
+            <p class="service-description">
+              100% ethically sourced Slavic cuticle-intact hair installed via micro-stitch beads. Lay completely flat against the scalp, completely undetectable even in high updos.
+            </p>
+            <div class="service-meta">
+              <span>⏱ 3–5 Hours</span>
+              <span>✦ Custom Color Blended</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Invisible Genius Weft Extensions" data-price="$800+">
+              Book Consultation
+            </button>
+          </div>
+
+          <div class="service-card" data-category="extensions">
+            <div class="service-card-header">
+              <div class="service-title-group">
+                <span class="service-tag">VIP Bridal</span>
+                <h3>Atelier Bridal Suite Experience</h3>
+              </div>
+              <div class="service-price-block">
+                <span class="price-from">Custom</span>
+                <span class="service-price">$1,200+</span>
+              </div>
+            </div>
+            <p class="service-description">
+              Full private salon buyout for bride and bridal party. Includes trial sessions, champagne brunch catering, bespoke hair adornment placement, and veil anchoring.
+            </p>
+            <div class="service-meta">
+              <span>⏱ Full Morning</span>
+              <span>✦ Private Suite Buyout</span>
+            </div>
+            <button class="btn btn-outline full-width book-service-btn" data-service="Atelier Bridal Suite Experience" data-price="$1,200+">
+              Inquire VIP Suite
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Before & After Transformation Slider -->
+    <section class="transformation-section" id="transformations">
+      <div class="container">
+        <div class="transformation-grid">
+          <div class="transformation-info">
+            <span class="section-eyebrow">Real Transformations</span>
+            <h2 class="section-title">The Power of Couture Transformation</h2>
+            <p class="section-lead">
+              Witness how custom French balayage and structural layering redefine natural features, restore hair integrity, and impart mirror-like brilliance.
+            </p>
+            <div class="transformation-details">
+              <div class="detail-card">
+                <span class="detail-label">Client</span>
+                <span class="detail-val">Genevieve D.</span>
+              </div>
+              <div class="detail-card">
+                <span class="detail-label">Master Stylist</span>
+                <span class="detail-val">Camille Laurent</span>
+              </div>
+              <div class="detail-card">
+                <span class="detail-label">Service</span>
+                <span class="detail-val">Correction & French Balayage</span>
+              </div>
+              <div class="detail-card">
+                <span class="detail-label">Session Duration</span>
+                <span class="detail-val">4.5 Hours</span>
+              </div>
+            </div>
+            <p class="transformation-notes">
+              <em>"From dull, compromised brass to lived-in buttery radiance with deep root contouring and Olaplex strength restoration."</em>
+            </p>
+            <button class="btn btn-primary" id="transformBookBtn">Book A Transformation Like This</button>
+          </div>
+
+          <!-- Interactive Comparison Widget -->
+          <div class="transformation-interactive">
+            <div class="comparison-container" id="comparisonSlider">
+              <!-- After Image (Full background) -->
+              <div class="comparison-img-wrapper after-wrapper">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1200&auto=format&fit=crop" alt="After: Transformed Balayage" class="comparison-img">
+                <span class="comparison-badge badge-after">AFTER • Haute Balayage</span>
+              </div>
+              <!-- Before Image (Clipped) -->
+              <div class="comparison-img-wrapper before-wrapper" id="beforeWrapper">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1200&auto=format&fit=crop" alt="Before: Prior Hair Condition" class="comparison-img">
+                <span class="comparison-badge badge-before">BEFORE • Dull Brass</span>
+              </div>
+              <!-- Drag Handle Divider -->
+              <div class="comparison-handle" id="sliderHandle">
+                <div class="handle-line"></div>
+                <div class="handle-knob">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>
+                  </svg>
+                </div>
+                <div class="handle-line"></div>
+              </div>
+            </div>
+            <div class="slider-hint">
+              <span>← Drag slider to reveal transformation →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet The Artisans -->
+    <section class="artisans-section" id="artisans">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">The Master Collective</span>
+          <h2 class="section-title">Meet Our Master Artisans</h2>
+          <p class="section-description">
+            Trained in Paris, London, and Tokyo, our resident artists bring international runway pedigree and unmatched technical precision to your chair.
+          </p>
+        </div>
+
+        <div class="artisans-grid">
+          <!-- Artisan 1 -->
+          <div class="artisan-card">
+            <div class="artisan-image-wrap">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=900&auto=format&fit=crop" alt="Camille Laurent" class="artisan-img">
+              <div class="artisan-badge">Creative Director</div>
+            </div>
+            <div class="artisan-info">
+              <div class="artisan-name-group">
+                <h3>Camille Laurent</h3>
+                <span class="artisan-title">16 Yrs • Paris & New York</span>
+              </div>
+              <p class="artisan-bio">
+                Former styling lead for Paris Fashion Week. Specializes in French freehand balayage, architectural bobs, and custom face-contouring highlights.
+              </p>
+              <div class="artisan-skills">
+                <span class="skill-tag">French Balayage</span>
+                <span class="skill-tag">Editorial Cut</span>
+                <span class="skill-tag">Face-Contouring</span>
+              </div>
+              <button class="btn btn-outline full-width select-artisan-btn" data-artisan="camille" data-artisan-name="Camille Laurent">
+                Book With Camille
+              </button>
+            </div>
+          </div>
+
+          <!-- Artisan 2 -->
+          <div class="artisan-card">
+            <div class="artisan-image-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=900&auto=format&fit=crop" alt="Sébastien Moreau" class="artisan-img">
+              <div class="artisan-badge">Master Colorist</div>
+            </div>
+            <div class="artisan-info">
+              <div class="artisan-name-group">
+                <h3>Sébastien Moreau</h3>
+                <span class="artisan-title">12 Yrs • Milan & Los Angeles</span>
+              </div>
+              <p class="artisan-bio">
+                Renowned color chemist known for high-dimensional lived-in blondes, complex color corrections, and mirror-like brunette glosses.
+              </p>
+              <div class="artisan-skills">
+                <span class="skill-tag">Color Correction</span>
+                <span class="skill-tag">Dimensional Blonde</span>
+                <span class="skill-tag">Gloss Chemistry</span>
+              </div>
+              <button class="btn btn-outline full-width select-artisan-btn" data-artisan="sebastien" data-artisan-name="Sébastien Moreau">
+                Book With Sébastien
+              </button>
+            </div>
+          </div>
+
+          <!-- Artisan 3 -->
+          <div class="artisan-card">
+            <div class="artisan-image-wrap">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=900&auto=format&fit=crop" alt="Elena Rostova" class="artisan-img">
+              <div class="artisan-badge">Extension Virtuoso</div>
+            </div>
+            <div class="artisan-info">
+              <div class="artisan-name-group">
+                <h3>Elena Rostova</h3>
+                <span class="artisan-title">10 Yrs • Zurich & Beverly Hills</span>
+              </div>
+              <p class="artisan-bio">
+                Master of invisible genius wefts and keratin bond micro-placements. Creates ultra-natural volume and cascading length without scalp tension.
+              </p>
+              <div class="artisan-skills">
+                <span class="skill-tag">Invisible Wefts</span>
+                <span class="skill-tag">K-Tip Placements</span>
+                <span class="skill-tag">Bridal Styling</span>
+              </div>
+              <button class="btn btn-outline full-width select-artisan-btn" data-artisan="elena" data-artisan-name="Elena Rostova">
+                Book With Elena
+              </button>
+            </div>
+          </div>
+
+          <!-- Artisan 4 -->
+          <div class="artisan-card">
+            <div class="artisan-image-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop" alt="Julian Vance" class="artisan-img">
+              <div class="artisan-badge">Trichology & Spa Director</div>
+            </div>
+            <div class="artisan-info">
+              <div class="artisan-name-group">
+                <h3>Julian Vance</h3>
+                <span class="artisan-title">9 Yrs • Tokyo Certified</span>
+              </div>
+              <p class="artisan-bio">
+                Certified Japanese Head Spa specialist. Blends scalp micro-exfoliation, thermal halo baths, and pressure point shiatsu to awaken dormant hair follicles.
+              </p>
+              <div class="artisan-skills">
+                <span class="skill-tag">Japanese Head Spa</span>
+                <span class="skill-tag">Scalp Longevity</span>
+                <span class="skill-tag">Aromatherapy</span>
+              </div>
+              <button class="btn btn-outline full-width select-artisan-btn" data-artisan="julian" data-artisan-name="Julian Vance">
+                Book With Julian
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Lookbook / Portfolio -->
+    <section class="lookbook-section" id="lookbook">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Visual Curation</span>
+          <h2 class="section-title">The Haute Mane Lookbook</h2>
+          <p class="section-description">
+            Explore our latest editorial portfolio of runway-ready creations, high-gloss finishes, and bespoke transformations.
+          </p>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="lookbook-filters">
+          <button class="filter-btn active" data-filter="all">All Works</button>
+          <button class="filter-btn" data-filter="balayage">Balayage</button>
+          <button class="filter-btn" data-filter="cuts">Sculpted Cuts</button>
+          <button class="filter-btn" data-filter="brunette">Rich Brunettes</button>
+          <button class="filter-btn" data-filter="editorial">Editorial Noir</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="lookbook-grid">
+          <div class="lookbook-item" data-category="balayage">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=900&auto=format&fit=crop" alt="Dimensional French Balayage">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">French Balayage</span>
+              <h4>Cashmere Bronde</h4>
+              <p>Camille Laurent</p>
+            </div>
+          </div>
+          <div class="lookbook-item" data-category="cuts">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=900&auto=format&fit=crop" alt="Textured Parisian Lob">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">Sculpted Cuts</span>
+              <h4>Parisian Feathered Lob</h4>
+              <p>Camille Laurent</p>
+            </div>
+          </div>
+          <div class="lookbook-item" data-category="brunette">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop" alt="High Gloss Espresso Brunette">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">Rich Brunettes</span>
+              <h4>Espresso Liquid Mirror</h4>
+              <p>Sébastien Moreau</p>
+            </div>
+          </div>
+          <div class="lookbook-item" data-category="editorial">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=900&auto=format&fit=crop" alt="Runway Sculpted Texture">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">Editorial Noir</span>
+              <h4>Gilded Crown Architecture</h4>
+              <p>Atelier Collective</p>
+            </div>
+          </div>
+          <div class="lookbook-item" data-category="balayage">
+            <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=900&auto=format&fit=crop" alt="Vanilla Blonde Babylights">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">Balayage</span>
+              <h4>Nordic Vanilla Silk</h4>
+              <p>Sébastien Moreau</p>
+            </div>
+          </div>
+          <div class="lookbook-item" data-category="cuts">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=900&auto=format&fit=crop" alt="Blunt Architectural Bob">
+            <div class="lookbook-hover">
+              <span class="lookbook-tag">Sculpted Cuts</span>
+              <h4>Micro-Fringe Geometric Bob</h4>
+              <p>Camille Laurent</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Praise & Press Carousel -->
+    <section class="praise-section" id="praise">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Acclaim & Testimonials</span>
+          <h2 class="section-title">Word From Our Discerning Guests</h2>
+        </div>
+
+        <div class="praise-carousel-wrapper">
+          <div class="praise-carousel" id="praiseCarousel">
+            <div class="praise-slide active">
+              <div class="quote-mark">“</div>
+              <blockquote class="praise-quote">
+                The Haute Mane is not merely a hair appointment—it is an ethereal sensory ritual. Camille took my compromised hair and sculpted a lived-in balayage that still looks impeccable 5 months later.
+              </blockquote>
+              <div class="praise-author">
+                <div class="author-avatar">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Vivienne St. Clair">
+                </div>
+                <div class="author-details">
+                  <h5>Vivienne St. Clair</h5>
+                  <span>Fashion Editor, Vogue International</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="praise-slide">
+              <div class="quote-mark">“</div>
+              <blockquote class="praise-quote">
+                The Japanese Head Spa in the private suite is transformative. The waterfall steam halo, acoustic tranquility, and exquisite caviar infusion made me feel like royalty. Unrivaled luxury.
+              </blockquote>
+              <div class="praise-author">
+                <div class="author-avatar">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Dr. Seraphina Vance">
+                </div>
+                <div class="author-details">
+                  <h5>Dr. Seraphina Vance</h5>
+                  <span>Private Client, Mayfair & Manhattan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="praise-slide">
+              <div class="quote-mark">“</div>
+              <blockquote class="praise-quote">
+                As someone who flies globally for red carpet appearances, Elena's invisible weft installations are the only ones I trust. Utterly weightless and completely invisible even under blinding flash photography.
+              </blockquote>
+              <div class="praise-author">
+                <div class="author-avatar">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Margot DuPont">
+                </div>
+                <div class="author-details">
+                  <h5>Margot DuPont</h5>
+                  <span>Cannes Film Festival Juror</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-nav">
+            <button class="carousel-btn prev-btn" id="prevPraiseBtn" aria-label="Previous testimonial">←</button>
+            <div class="carousel-dots" id="carouselDots">
+              <span class="dot active" data-index="0"></span>
+              <span class="dot" data-index="1"></span>
+              <span class="dot" data-index="2"></span>
+            </div>
+            <button class="carousel-btn next-btn" id="nextPraiseBtn" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+
+        <!-- Press Logos Banner -->
+        <div class="press-logos">
+          <span class="press-logo">VOGUE</span>
+          <span class="press-logo">ELLE</span>
+          <span class="press-logo">HARPER'S BAZAAR</span>
+          <span class="press-logo">L'OFFICIEL</span>
+          <span class="press-logo">VANITY FAIR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Atelier Experience & Location -->
+    <section class="atelier-section" id="atelier">
+      <div class="container">
+        <div class="atelier-card-wrapper">
+          <div class="atelier-info-col">
+            <span class="section-eyebrow">Private Sanctuary</span>
+            <h2 class="section-title">The Atelier Details</h2>
+            <p class="atelier-desc">
+              Situated in the premier heritage district, our multi-level salon features vaulted ceilings, travertine stone wash basins, and secluded private VIP dressing suites.
+            </p>
+
+            <div class="atelier-details-list">
+              <div class="detail-row">
+                <div class="detail-icon">📍</div>
+                <div>
+                  <strong>Address</strong>
+                  <p>742 Montaigne Boulevard, Haute Quarter</p>
+                </div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-icon">⏰</div>
+                <div>
+                  <strong>Atelier Hours</strong>
+                  <p>Tuesday – Saturday: 9:00 AM – 8:00 PM<br>Sunday – Monday: Private VIP Buyouts by Request</p>
+                </div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-icon">🚗</div>
+                <div>
+                  <strong>Guest Valet & Amenities</strong>
+                  <p>Complimentary curbside valet, vintage Champagne bar, and private soundproof styling alcoves.</p>
+                </div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-icon">📞</div>
+                <div>
+                  <strong>Concierge Direct</strong>
+                  <p>concierge@thehautemane.com • +1 (800) 555-MANE</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Atelier Inquiry Form -->
+          <div class="atelier-form-col">
+            <div class="form-card">
+              <h3>Direct Concierge Inquiry</h3>
+              <p>For custom bridal suites, editorial inquiries, or private VIP salon buyouts.</p>
+              <form id="atelierInquiryForm">
+                <div class="form-group">
+                  <label for="inquiryName">Full Name</label>
+                  <input type="text" id="inquiryName" placeholder="e.g. Lady Genevieve" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="inquiryEmail">Email</label>
+                    <input type="email" id="inquiryEmail" placeholder="your@email.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inquiryPhone">Phone</label>
+                    <input type="tel" id="inquiryPhone" placeholder="+1 (555) 000-0000">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inquiryType">Inquiry Type</label>
+                  <select id="inquiryType">
+                    <option value="private-suite">VIP Private Suite Booking</option>
+                    <option value="bridal-buyout">Bridal Party Salon Buyout</option>
+                    <option value="editorial">Editorial / Runway Inquiry</option>
+                    <option value="custom">General Consultation</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inquiryMessage">Special Requests & Preferences</label>
+                  <textarea id="inquiryMessage" rows="3" placeholder="Tell us about your hair goals or specific accommodations..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Send Concierge Inquiry</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <span class="footer-logo">THE HAUTE MANE</span>
+          <span class="footer-tagline">Atelier de Haute Coiffure</span>
+          <p class="footer-desc">
+            An artisanal temple dedicated to the elegance of couture hair design, French balayage alchemy, and therapeutic scalp sanctuaries.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+            <a href="#" class="social-icon" aria-label="Pinterest">PIN</a>
+            <a href="#" class="social-icon" aria-label="TikTok">TT</a>
+            <a href="#" class="social-icon" aria-label="Vogue Directory">VG</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Rituals</h4>
+          <ul class="footer-links">
+            <li><a href="#services">French Balayage</a></li>
+            <li><a href="#services">Couture Architecture Cut</a></li>
+            <li><a href="#services">Japanese Head Spa</a></li>
+            <li><a href="#services">Slavic Hair Extensions</a></li>
+            <li><a href="#services">Beluga Caviar Therapy</a></li>
+            <li><a href="#services">Bridal Sanctuary</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">The Atelier</h4>
+          <ul class="footer-links">
+            <li><a href="#artisans">Master Artisans</a></li>
+            <li><a href="#philosophy">Our Philosophy</a></li>
+            <li><a href="#transformations">Before & After</a></li>
+            <li><a href="#lookbook">Editorial Lookbook</a></li>
+            <li><a href="#praise">Press & Honors</a></li>
+            <li><a href="#atelier">VIP Suite Amenities</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col newsletter-col">
+          <h4 class="footer-heading">The Mane Gazette</h4>
+          <p class="newsletter-sub">
+            Receive private invitations to guest artisan residencies, seasonal lookbooks, and luxury hair wellness notes.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email address" required id="newsletterEmail">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <span class="newsletter-note">Discretion assured. No spam ever.</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          © 2026 The Haute Mane Atelier. All rights reserved.
+        </div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Terms of Service</a>
+          <span>•</span>
+          <a href="#">Concierge Care</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive 5-Step Appointment Booking Modal -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close booking modal">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-eyebrow">Atelier Concierge</span>
+        <h3 class="modal-title" id="modalTitle">Reserve Your Bespoke Session</h3>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="modal-steps">
+        <div class="step-badge active" data-step="1">1. Ritual</div>
+        <div class="step-connector"></div>
+        <div class="step-badge" data-step="2">2. Artisan</div>
+        <div class="step-connector"></div>
+        <div class="step-badge" data-step="3">3. Schedule</div>
+        <div class="step-connector"></div>
+        <div class="step-badge" data-step="4">4. Details</div>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step 1: Select Ritual -->
+        <div class="booking-step active" id="bookingStep1">
+          <h4>Select Your Signature Ritual</h4>
+          <div class="booking-options-list" id="modalServiceOptions">
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedService" value="French Editorial Balayage" data-price="$380" checked>
+              <div class="radio-card-content">
+                <div class="radio-card-title">French Editorial Balayage</div>
+                <div class="radio-card-desc">Dimensional hand-painted blonde or bronde with gloss glaze. (3.5 hrs)</div>
+              </div>
+              <div class="radio-card-price">$380</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedService" value="Couture Hair Architecture Cut" data-price="$195">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Couture Hair Architecture Cut</div>
+                <div class="radio-card-desc">Face-framing texturizing, cranial massage, master blowout. (75 mins)</div>
+              </div>
+              <div class="radio-card-price">$195</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedService" value="Japanese Head Spa & Scalp Detox" data-price="$260">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Japanese Head Spa & Scalp Detox</div>
+                <div class="radio-card-desc">Microscopic trichology, steam halo waterfall, shiatsu massage. (90 mins)</div>
+              </div>
+              <div class="radio-card-price">$260</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedService" value="Lived-In Sunlit Blonde" data-price="$420">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Lived-In Sunlit Blonde</div>
+                <div class="radio-card-desc">Micro-babylights with seamless multi-month grow-out. (4 hrs)</div>
+              </div>
+              <div class="radio-card-price">$420</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedService" value="Invisible Genius Weft Extensions" data-price="$800+">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Invisible Genius Weft Extensions</div>
+                <div class="radio-card-desc">Slavic ethically sourced hair with tension-free beads. (3-5 hrs)</div>
+              </div>
+              <div class="radio-card-price">$800+</div>
+            </label>
+          </div>
+          <div class="modal-footer-nav">
+            <div></div>
+            <button class="btn btn-primary next-step-btn" data-next="2">Next: Choose Artisan →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Select Artisan -->
+        <div class="booking-step" id="bookingStep2">
+          <h4>Select Your Master Artisan</h4>
+          <div class="booking-options-list">
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedArtisan" value="First Available Master" checked>
+              <div class="radio-card-content">
+                <div class="radio-card-title">First Available Master Artisan</div>
+                <div class="radio-card-desc">Recommended for fastest availability across our senior team.</div>
+              </div>
+              <div class="radio-card-price">✦ Team</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedArtisan" value="Camille Laurent (Creative Director)">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Camille Laurent</div>
+                <div class="radio-card-desc">Creative Director • Specialist in French Balayage & Parisian Bobs.</div>
+              </div>
+              <div class="radio-card-price">+ $40</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedArtisan" value="Sébastien Moreau (Master Colorist)">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Sébastien Moreau</div>
+                <div class="radio-card-desc">Master Colorist • Color Chemist & Dimensional Blonde Specialist.</div>
+              </div>
+              <div class="radio-card-price">+ $30</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedArtisan" value="Elena Rostova (Extension Virtuoso)">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Elena Rostova</div>
+                <div class="radio-card-desc">Extension Virtuoso • Invisible Wefts & Red-Carpet Length.</div>
+              </div>
+              <div class="radio-card-price">Standard</div>
+            </label>
+
+            <label class="booking-radio-card">
+              <input type="radio" name="selectedArtisan" value="Julian Vance (Head Spa Specialist)">
+              <div class="radio-card-content">
+                <div class="radio-card-title">Julian Vance</div>
+                <div class="radio-card-desc">Head Spa Specialist • Japanese Trichology & Cranial Therapy.</div>
+              </div>
+              <div class="radio-card-price">Standard</div>
+            </label>
+          </div>
+          <div class="modal-footer-nav">
+            <button class="btn btn-outline prev-step-btn" data-prev="1">← Back</button>
+            <button class="btn btn-primary next-step-btn" data-next="3">Next: Schedule Date →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Select Schedule -->
+        <div class="booking-step" id="bookingStep3">
+          <h4>Choose Your Preferred Time</h4>
+          <div class="schedule-picker-grid">
+            <div class="form-group">
+              <label for="bookingDate">Appointment Date</label>
+              <input type="date" id="bookingDate" class="luxury-input" required>
+            </div>
+            <div class="form-group">
+              <label>Select Arrival Slot</label>
+              <div class="time-slot-grid" id="timeSlotsContainer">
+                <button type="button" class="time-slot-btn active">09:30 AM</button>
+                <button type="button" class="time-slot-btn">11:00 AM</button>
+                <button type="button" class="time-slot-btn">01:30 PM</button>
+                <button type="button" class="time-slot-btn">03:45 PM</button>
+                <button type="button" class="time-slot-btn">05:15 PM</button>
+                <button type="button" class="time-slot-btn">06:30 PM (VIP)</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer-nav">
+            <button class="btn btn-outline prev-step-btn" data-prev="2">← Back</button>
+            <button class="btn btn-primary next-step-btn" data-next="4">Next: Guest Details →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Guest Details -->
+        <div class="booking-step" id="bookingStep4">
+          <h4>Guest Information & Concierge Notes</h4>
+          <div class="guest-form-grid">
+            <div class="form-group">
+              <label for="guestName">Full Name *</label>
+              <input type="text" id="guestName" placeholder="e.g. Genevieve Devereaux" required>
+            </div>
+            <div class="form-group">
+              <label for="guestEmail">Email Address (For Confirmation) *</label>
+              <input type="email" id="guestEmail" placeholder="genevieve@luxury.com" required>
+            </div>
+            <div class="form-group">
+              <label for="guestPhone">Mobile Number (For Concierge SMS) *</label>
+              <input type="tel" id="guestPhone" placeholder="+1 (555) 234-5678" required>
+            </div>
+            <div class="form-group">
+              <label for="guestPreference">Concierge Experience Preference</label>
+              <select id="guestPreference">
+                <option value="standard">Chilled Champagne & Atelier Conversation</option>
+                <option value="silent">Silent Session (Peaceful, No Small Talk)</option>
+                <option value="vip">Private Enclosed VIP Suite (Discreet)</option>
+                <option value="tea">Organic Herbal Tea Tasting & Scalp Focus</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Summary Box -->
+          <div class="booking-summary-card" id="bookingSummaryBox">
+            <h5>Reservation Summary</h5>
+            <div class="summary-line"><span>Selected Ritual:</span> <strong id="sumService">French Balayage</strong></div>
+            <div class="summary-line"><span>Artisan:</span> <strong id="sumArtisan">First Available Master</strong></div>
+            <div class="summary-line"><span>Date & Time:</span> <strong id="sumDateTime">Tomorrow at 09:30 AM</strong></div>
+            <div class="summary-line"><span>Estimated Investment:</span> <strong id="sumPrice">$380</strong></div>
+          </div>
+
+          <div class="modal-footer-nav">
+            <button class="btn btn-outline prev-step-btn" data-prev="3">← Back</button>
+            <button class="btn btn-primary" id="confirmBookingBtn">Confirm Reservation ✦</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Confirmation Success -->
+        <div class="booking-step" id="bookingStep5">
+          <div class="confirmation-wrap text-center">
+            <div class="confirmation-icon">⚜</div>
+            <h3>Your Appointment Is Reserved</h3>
+            <p class="confirmation-lead">
+              We look forward to welcoming you to The Haute Mane Atelier.
+            </p>
+            <div class="confirmation-ticket">
+              <div class="ticket-code">CONFIRMATION #HM-<span id="confirmedRefCode">94821</span></div>
+              <div class="ticket-details">
+                <p><strong>Guest:</strong> <span id="confirmedGuest">Genevieve Devereaux</span></p>
+                <p><strong>Ritual:</strong> <span id="confirmedRitual">French Editorial Balayage</span></p>
+                <p><strong>Artisan:</strong> <span id="confirmedArtisan">Camille Laurent</span></p>
+                <p><strong>Time:</strong> <span id="confirmedSchedule">October 14 • 11:00 AM</span></p>
+                <p><strong>Suite:</strong> VIP Dressing Suite 3 • Complimentary Valet Reserved</p>
+              </div>
+            </div>
+            <p class="confirmation-subtext">
+              A private calendar invitation and chauffeur/valet instructions have been dispatched to your email.
+            </p>
+            <button class="btn btn-primary" id="closeConfirmationBtn">Return to Atelier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
